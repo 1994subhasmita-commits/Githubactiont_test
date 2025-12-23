@@ -1,5 +1,10 @@
-- name: System info
-  run: |
-    uname -a
-    df -h
-    free -m
+name: Repo Info
+on: push
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          echo "Branch: $(git branch --show-current)"
+          echo "Commit: $(git rev-parse --short HEAD)"
